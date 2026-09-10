@@ -1,10 +1,11 @@
-const state = JSON.parse(localStorage.getItem('nftDepotState') || '{"balance":2480,"history":[],"deposits":[],"games":0}');
+const state = JSON.parse(localStorage.getItem('nftDepotState') || '{"balance":2480,"history":[],"deposits":[],"games":0,"collection":[]}');
 const save = () => { localStorage.setItem('nftDepotState', JSON.stringify(state)); render(); };
 const money = value => new Intl.NumberFormat('ru-RU').format(value);
 const $ = selector => document.querySelector(selector);
 const toast = message => { const node = $('#toast'); node.textContent = message; node.classList.add('show'); setTimeout(() => node.classList.remove('show'), 2800); };
 function render() {
   $('#balance').textContent = money(state.balance);
+  $('#collection-count').textContent = state.collection.length;
   $('#games-count').textContent = state.games;
   const history = $('#history');
   history.innerHTML = state.history.length ? state.history.slice(0, 5).map(item => `<div class="history-row"><span>${item.game}</span><span>${item.time}</span><strong class="${item.result >= 0 ? 'win' : 'loss'}">${item.result >= 0 ? '+' : ''}${money(item.result)} кредитов</strong></div>`).join('') : '<p class="muted">Здесь появится история твоих игр.</p>';
@@ -16,6 +17,15 @@ function render() {
 }
 function switchView(view) { document.querySelectorAll('.view').forEach(item => item.classList.remove('active-view')); $(`#view-${view}`).classList.add('active-view'); document.querySelectorAll('.nav-item').forEach(item => item.classList.toggle('active', item.dataset.view === view)); $('#page-title').textContent = { games: 'Игровой зал', deposit: 'Пополнение', withdraw: 'Вывод', profile: 'Профиль' }[view]; }
 document.querySelectorAll('.nav-item').forEach(button => button.addEventListener('click', () => switchView(button.dataset.view)));
+document.querySelectorAll('.buy-button').forEach(button => button.addEventListener('click', () => {
+  const gift = button.dataset.gift;
+  if (state.collection.includes(gift)) return toast('Этот подарок уже в коллекции');
+  state.collection.push(gift);
+  button.innerHTML = '✓ В коллекции';
+  button.disabled = true;
+  save();
+  toast(`${gift} добавлен в коллекцию`);
+}));
 $('#clear-history').addEventListener('click', () => { state.history = []; save(); });
 $('#proof-file').addEventListener('change', event => { $('#file-label').textContent = event.target.files[0]?.name || 'Выбрать изображение'; });
 $('#submit-deposit').addEventListener('click', () => { const file = $('#proof-file').files[0]; const recent = state.deposits.filter(item => Date.now() - item.created < 1800000).length; if (!file) return toast('Сначала выбери изображение'); if (recent >= 5) return toast('Лимит 5 заявок за 30 минут исчерпан'); state.deposits.unshift({ file: file.name, time: new Date().toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' }), status: 'На проверке', created: Date.now() }); $('#proof-file').value = ''; $('#file-label').textContent = 'Выбрать изображение'; save(); toast('Заявка отправлена администратору'); });
