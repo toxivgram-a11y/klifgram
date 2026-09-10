@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Klifgram NFT Depot</title>
   <link rel="stylesheet" href="styles.css">
-  <style>.nft-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.nft-card{min-height:182px;padding:16px;display:flex;flex-direction:column;justify-content:space-between;color:var(--ink);border:1px solid rgba(16,19,19,.08)}.nft-art{height:92px;display:grid;place-items:center;font-size:58px;font-weight:800}.nft-sun{background:#f2e28d}.nft-wave{background:#9edbd8}.nft-flame{background:#f5b19b}.nft-id{font:9px 'DM Mono',monospace;color:#59615d}.nft-card h3{font-size:17px;margin:5px 0 3px;letter-spacing:-.04em}.nft-card p{font-size:10px;color:#69716b;margin:0}.nft-heading{margin-bottom:13px}@media(max-width:760px){.nft-grid{grid-template-columns:1fr}}</style>
+  <style>.nft-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.nft-card{min-height:182px;padding:16px;display:flex;flex-direction:column;justify-content:space-between;color:var(--ink);border:1px solid rgba(16,19,19,.08)}.nft-art{height:92px;display:grid;place-items:center;overflow:hidden}.nft-art img{width:100%;height:100%;object-fit:contain}.nft-sun{background:#f2e28d}.nft-wave{background:#9edbd8}.nft-flame{background:#f5b19b}.nft-id{font:9px 'DM Mono',monospace;color:#59615d}.nft-card h3{font-size:17px;margin:5px 0 3px;letter-spacing:-.04em}.nft-card p{font-size:10px;color:#69716b;margin:0}.nft-heading{margin-bottom:13px}@media(max-width:760px){.nft-grid{grid-template-columns:1fr}}</style>
 </head>
 <body>
   <div class="app-shell">
@@ -35,9 +35,9 @@
         </div>
         <div class="section-heading nft-heading"><div><p class="eyebrow">Коллекции депо</p><h2>NFT подарки</h2></div><span class="round-stat">Доступные коллекции</span></div>
         <div class="nft-grid">
-          <article class="nft-card nft-sun"><div class="nft-art">✦</div><div><span class="nft-id">GIFT #001</span><h3>Golden Star</h3><p>Редкость · Legendary</p></div></article>
-          <article class="nft-card nft-wave"><div class="nft-art">◒</div><div><span class="nft-id">GIFT #014</span><h3>Blue Wave</h3><p>Редкость · Rare</p></div></article>
-          <article class="nft-card nft-flame"><div class="nft-art">♢</div><div><span class="nft-id">GIFT #027</span><h3>Red Flame</h3><p>Редкость · Epic</p></div></article>
+          <article class="nft-card nft-sun"><div class="nft-art"><img src="assets/gift_1.webp" alt="Telegram gift 5167939598143193218"></div><div><span class="nft-id">GIFT #5167939598143193218</span><h3>Telegram Gift</h3><p>Коллекция · Original</p></div></article>
+          <article class="nft-card nft-wave"><div class="nft-art"><img src="assets/gift_2.webp" alt="Telegram gift 5168043875654172773"></div><div><span class="nft-id">GIFT #5168043875654172773</span><h3>Telegram Gift</h3><p>Коллекция · Original</p></div></article>
+          <article class="nft-card nft-flame"><div class="nft-art"><img src="assets/gift_3.webp" alt="Telegram gift 5168103777563050263"></div><div><span class="nft-id">GIFT #5168103777563050263</span><h3>Telegram Gift</h3><p>Коллекция · Original</p></div></article>
         </div>
         <div class="lower-grid"><div class="panel"><div class="panel-title"><h3>Последние игры</h3><button class="text-button" id="clear-history">Очистить</button></div><div id="history" class="history"></div></div><div class="panel tips"><span class="tip-icon">i</span><div><h3>Проверка NFT</h3><p>Каждая заявка на пополнение проходит ручную проверку по данным подарка и имени отправителя.</p></div></div></div>
       </section>
