@@ -1,4 +1,4 @@
-const state = JSON.parse(localStorage.getItem('nftDepotState') || '{"balance":2480,"history":[],"deposits":[],"games":0,"collection":[]}');
+const state = JSON.parse(localStorage.getItem('nftDepotState') || '{"balance":2480,"history":[],"deposits":[],"games":0,"collection":[],"selectedGift":""}');
 const save = () => { localStorage.setItem('nftDepotState', JSON.stringify(state)); render(); };
 const money = value => new Intl.NumberFormat('ru-RU').format(value);
 const $ = selector => document.querySelector(selector);
@@ -25,6 +25,15 @@ document.querySelectorAll('.buy-button').forEach(button => button.addEventListen
   button.disabled = true;
   save();
   toast(`${gift} добавлен в коллекцию`);
+}));
+document.querySelectorAll('.upgrade-button').forEach(button => button.addEventListener('click', () => {
+  const gift = button.dataset.upgrade;
+  if (!state.collection.includes(gift)) return toast('Сначала добавь подарок в коллекцию');
+  state.selectedGift = gift;
+  switchView('games');
+  openGame('upgrade');
+  $('#modal-title').textContent = `Апгрейд: ${gift}`;
+  $('#modal-subtitle').textContent = 'Улучши выбранный Telegram-подарок';
 }));
 $('#clear-history').addEventListener('click', () => { state.history = []; save(); });
 $('#proof-file').addEventListener('change', event => { $('#file-label').textContent = event.target.files[0]?.name || 'Выбрать изображение'; });
