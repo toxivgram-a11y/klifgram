@@ -1,10 +1,10 @@
 const state = JSON.parse(localStorage.getItem('nftDepotState') || '{"balance":2480,"history":[],"deposits":[],"games":0,"collection":[],"selectedGift":""}');
+state.collection = Array.isArray(state.collection) ? state.collection : [];
 const save = () => { localStorage.setItem('nftDepotState', JSON.stringify(state)); render(); };
 const money = value => new Intl.NumberFormat('ru-RU').format(value);
 const $ = selector => document.querySelector(selector);
 const toast = message => { const node = $('#toast'); node.textContent = message; node.classList.add('show'); setTimeout(() => node.classList.remove('show'), 2800); };
 function render() {
-  $('#balance').textContent = money(state.balance);
   $('#collection-count').textContent = state.collection.length;
   $('#games-count').textContent = state.games;
   const history = $('#history');
