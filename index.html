@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>NFT Depot | Test Credits</title>
+  <title>Klifgram NFT Depot</title>
   <link rel="stylesheet" href="styles.css">
   <style>.nft-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.nft-card{min-height:182px;padding:16px;display:flex;flex-direction:column;justify-content:space-between;color:var(--ink);border:1px solid rgba(16,19,19,.08)}.nft-art{height:92px;display:grid;place-items:center;font-size:58px;font-weight:800}.nft-sun{background:#f2e28d}.nft-wave{background:#9edbd8}.nft-flame{background:#f5b19b}.nft-id{font:9px 'DM Mono',monospace;color:#59615d}.nft-card h3{font-size:17px;margin:5px 0 3px;letter-spacing:-.04em}.nft-card p{font-size:10px;color:#69716b;margin:0}.nft-heading{margin-bottom:13px}@media(max-width:760px){.nft-grid{grid-template-columns:1fr}}</style>
 </head>
@@ -11,39 +11,39 @@
   <div class="app-shell">
     <aside class="sidebar">
       <div class="brand"><span class="brand-mark">N</span><span>NFT DEPOT</span></div>
-      <div class="network"><span class="status-dot"></span> Demo network</div>
+      <div class="network"><span class="status-dot"></span> Klifgram network</div>
       <nav class="nav" aria-label="Основная навигация">
         <button class="nav-item active" data-view="games"><span>◈</span> Игры</button>
         <button class="nav-item" data-view="deposit"><span>↥</span> Пополнение</button>
         <button class="nav-item" data-view="withdraw"><span>↧</span> Вывод</button>
         <button class="nav-item" data-view="profile"><span>◎</span> Профиль</button>
       </nav>
-      <div class="sidebar-foot"><span>Без реальных денег</span><small>Только тестовый режим</small></div>
+      <div class="sidebar-foot"><span>NFT marketplace</span><small>Проверка заявок вручную</small></div>
     </aside>
     <main class="main-content">
       <header class="topbar">
         <div><p class="eyebrow">Добро пожаловать</p><h1 id="page-title">Игровой зал</h1></div>
-        <div class="balance-pill"><span>Баланс</span><strong id="balance">2 480</strong><b>TC</b></div>
+        <div class="balance-pill"><span>Баланс</span><strong id="balance">2 480</strong><b>кредитов</b></div>
       </header>
       <section id="view-games" class="view active-view">
-        <div class="hero-strip"><div><span class="tag">TEST CREDITS</span><h2>Играй аккуратно.<br><em>Выигрывай умно.</em></h2><p>Три режима, один баланс и прозрачная история каждой игры.</p></div><div class="hero-orb">✦<small>LIVE</small></div></div>
+        <div class="hero-strip"><div><span class="tag">KLIFGRAM DEPOT</span><h2>Играй аккуратно.<br><em>Выигрывай умно.</em></h2><p>Три режима, один баланс и прозрачная история каждой игры.</p></div><div class="hero-orb">✦<small>LIVE</small></div></div>
         <div class="section-heading"><div><p class="eyebrow">Выбери режим</p><h2>Игры</h2></div><span class="round-stat">● Все системы в норме</span></div>
         <div class="game-grid">
           <button class="game-card mines" data-game="mines"><span class="game-icon">✣</span><span class="game-name">Мины</span><span class="game-meta">Риск / награда <b>→</b></span></button>
           <button class="game-card crash" data-game="crash"><span class="game-icon">↗</span><span class="game-name">Краш</span><span class="game-meta">Поймай множитель <b>→</b></span></button>
           <button class="game-card upgrade" data-game="upgrade"><span class="game-icon">◇</span><span class="game-name">Апгрейд</span><span class="game-meta">Улучши шанс <b>→</b></span></button>
         </div>
-        <div class="section-heading nft-heading"><div><p class="eyebrow">Коллекция депо</p><h2>NFT подарки</h2></div><span class="round-stat">Тестовая витрина</span></div>
+        <div class="section-heading nft-heading"><div><p class="eyebrow">Коллекции депо</p><h2>NFT подарки</h2></div><span class="round-stat">Доступные коллекции</span></div>
         <div class="nft-grid">
           <article class="nft-card nft-sun"><div class="nft-art">✦</div><div><span class="nft-id">GIFT #001</span><h3>Golden Star</h3><p>Редкость · Legendary</p></div></article>
           <article class="nft-card nft-wave"><div class="nft-art">◒</div><div><span class="nft-id">GIFT #014</span><h3>Blue Wave</h3><p>Редкость · Rare</p></div></article>
           <article class="nft-card nft-flame"><div class="nft-art">♢</div><div><span class="nft-id">GIFT #027</span><h3>Red Flame</h3><p>Редкость · Epic</p></div></article>
         </div>
-        <div class="lower-grid"><div class="panel"><div class="panel-title"><h3>Последние игры</h3><button class="text-button" id="clear-history">Очистить</button></div><div id="history" class="history"></div></div><div class="panel tips"><span class="tip-icon">i</span><div><h3>Демо-режим</h3><p>Все ставки используют только тестовые кредиты. Пополнения NFT и выплаты подключаются отдельно через проверенный backend.</p></div></div></div>
+        <div class="lower-grid"><div class="panel"><div class="panel-title"><h3>Последние игры</h3><button class="text-button" id="clear-history">Очистить</button></div><div id="history" class="history"></div></div><div class="panel tips"><span class="tip-icon">i</span><div><h3>Проверка NFT</h3><p>Каждая заявка на пополнение проходит ручную проверку по данным подарка и имени отправителя.</p></div></div></div>
       </section>
-      <section id="view-deposit" class="view"><div class="section-heading"><div><p class="eyebrow">Подтверждение перевода</p><h2>Пополнение</h2></div><span class="limit-badge">Осталось заявок: <b id="limit-count">5</b>/5</span></div><div class="deposit-layout"><div class="panel upload-panel"><div class="upload-icon">↑</div><h3>Отправь фото подарка</h3><p>Загрузи скриншот перевода NFT. Заявка будет проверена администратором.</p><label class="file-drop"><input type="file" id="proof-file" accept="image/*"><span id="file-label">Выбрать изображение</span><small>PNG, JPG до 10 MB</small></label><button class="primary-button" id="submit-deposit">Отправить на проверку <span>→</span></button><p class="form-note">Проверка ника и подарка в демо-режиме имитируется.</p></div><div class="panel steps"><h3>Как это работает</h3><div class="step"><b>01</b><div><strong>Сделай перевод</strong><span>Отправь NFT на адрес проекта</span></div></div><div class="step"><b>02</b><div><strong>Прикрепи подтверждение</strong><span>На скриншоте должен быть виден ник</span></div></div><div class="step"><b>03</b><div><strong>Дождись проверки</strong><span>Администратор подтвердит заявку</span></div></div></div></div><div id="deposit-list" class="panel deposit-list"><div class="panel-title"><h3>Мои заявки</h3><span class="muted">Последние 30 минут</span></div></div></section>
-      <section id="view-withdraw" class="view"><div class="section-heading"><div><p class="eyebrow">Запрос выплаты</p><h2>Вывод</h2></div></div><div class="panel form-panel"><label>Сумма <input id="withdraw-amount" type="number" min="100" placeholder="Минимум 100 TC"></label><label>Кошелёк / Telegram username <input id="withdraw-destination" placeholder="@username или адрес"></label><button class="primary-button" id="withdraw-button">Создать заявку <span>→</span></button><p class="form-note">В демо-режиме заявка не отправляет реальные средства.</p></div></section>
-      <section id="view-profile" class="view"><div class="section-heading"><div><p class="eyebrow">Аккаунт</p><h2>Профиль</h2></div></div><div class="profile-card panel"><div class="avatar">A</div><div><p class="eyebrow">Telegram user</p><h3>@demo_player</h3><span class="muted">Участник с 10 сентября 2026</span></div><div class="profile-stat"><span>Всего игр</span><strong id="games-count">0</strong></div><div class="profile-stat"><span>Винрейт</span><strong>--</strong></div></div></section>
+      <section id="view-deposit" class="view"><div class="section-heading"><div><p class="eyebrow">Подтверждение перевода</p><h2>Пополнение</h2></div><span class="limit-badge">Осталось заявок: <b id="limit-count">5</b>/5</span></div><div class="deposit-layout"><div class="panel upload-panel"><div class="upload-icon">↑</div><h3>Отправь фото или видео</h3><p>Загрузи подтверждение перевода NFT-подарка. Заявка будет проверена администратором.</p><label class="file-drop"><input type="file" id="proof-file" accept="image/*,video/*"><span id="file-label">Выбрать файл</span><small>Фото или видео до 10 MB</small></label><button class="primary-button" id="submit-deposit">Отправить на проверку <span>→</span></button><p class="form-note">На файле должны быть видны имя отправителя и данные подарка.</p></div><div class="panel steps"><h3>Как это работает</h3><div class="step"><b>01</b><div><strong>Сделай перевод</strong><span>Отправь NFT на адрес проекта</span></div></div><div class="step"><b>02</b><div><strong>Прикрепи подтверждение</strong><span>На фото или видео должен быть виден ник</span></div></div><div class="step"><b>03</b><div><strong>Дождись проверки</strong><span>Администратор подтвердит заявку</span></div></div></div></div><div id="deposit-list" class="panel deposit-list"><div class="panel-title"><h3>Мои заявки</h3><span class="muted">Последние 30 минут</span></div></div></section>
+      <section id="view-withdraw" class="view"><div class="section-heading"><div><p class="eyebrow">Запрос выплаты</p><h2>Вывод</h2></div></div><div class="panel form-panel"><label>Сумма <input id="withdraw-amount" type="number" min="100" placeholder="Минимум 100 кредитов"></label><label>Кошелёк / Telegram username <input id="withdraw-destination" placeholder="@username или адрес"></label><button class="primary-button" id="withdraw-button">Создать заявку <span>→</span></button><p class="form-note">Заявка будет передана администратору на проверку.</p></div></section>
+      <section id="view-profile" class="view"><div class="section-heading"><div><p class="eyebrow">Аккаунт</p><h2>Профиль</h2></div></div><div class="profile-card panel"><div class="avatar">A</div><div><p class="eyebrow">Telegram user</p><h3>@klifgram_user</h3><span class="muted">Участник с 10 сентября 2026</span></div><div class="profile-stat"><span>Всего игр</span><strong id="games-count">0</strong></div><div class="profile-stat"><span>Винрейт</span><strong>--</strong></div></div></section>
     </main>
   </div>
   <div id="game-modal" class="modal-backdrop hidden"><div class="game-modal"><button class="close-modal" id="close-modal">×</button><span class="tag" id="modal-tag">MINES</span><h2 id="modal-title">Мины</h2><p id="modal-subtitle">Выбери безопасную клетку</p><div id="game-content"></div></div></div>

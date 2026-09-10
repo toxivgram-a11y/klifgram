@@ -1,0 +1,9 @@
+{
+  "name": "klifgram-depot",
+  "version": "1.0.0",
+  "private": true,
+  "description": "NFT Depot web interface",
+  "scripts": {
+    "start": "node server.js"
+  }
+}
