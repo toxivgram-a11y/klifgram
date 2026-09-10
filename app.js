@@ -15,7 +15,7 @@ function render() {
   const recent = state.deposits.filter(item => Date.now() - item.created < 1800000).length;
   $('#limit-count').textContent = Math.max(0, 5 - recent);
 }
-function switchView(view) { document.querySelectorAll('.view').forEach(item => item.classList.remove('active-view')); $(`#view-${view}`).classList.add('active-view'); document.querySelectorAll('.nav-item').forEach(item => item.classList.toggle('active', item.dataset.view === view)); $('#page-title').textContent = { games: 'Игровой зал', deposit: 'Пополнение', withdraw: 'Вывод', profile: 'Профиль' }[view]; }
+function switchView(view) { const target = view === 'market' ? 'games' : view; document.querySelectorAll('.view').forEach(item => item.classList.remove('active-view')); $(`#view-${target}`).classList.add('active-view'); document.querySelectorAll('.nav-item').forEach(item => item.classList.toggle('active', item.dataset.view === view)); $('#page-title').textContent = { games: 'Игровой зал', market: 'Маркет', deposit: 'Пополнение', withdraw: 'Вывод', profile: 'Профиль' }[view]; if (view === 'market') document.querySelector('.nft-heading').scrollIntoView({ behavior: 'smooth', block: 'start' }); }
 document.querySelectorAll('.nav-item').forEach(button => button.addEventListener('click', () => switchView(button.dataset.view)));
 document.querySelectorAll('.buy-button').forEach(button => button.addEventListener('click', () => {
   const gift = button.dataset.gift;
