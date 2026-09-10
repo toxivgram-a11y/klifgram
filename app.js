@@ -1,5 +1,6 @@
 const state = JSON.parse(localStorage.getItem('nftDepotState') || '{"balance":2480,"history":[],"deposits":[],"games":0,"collection":[],"selectedGift":""}');
 state.collection = Array.isArray(state.collection) ? state.collection : [];
+state.adminHistory = Array.isArray(state.adminHistory) ? state.adminHistory : [];
 const save = () => { localStorage.setItem('nftDepotState', JSON.stringify(state)); render(); };
 const money = value => new Intl.NumberFormat('ru-RU').format(value);
 const $ = selector => document.querySelector(selector);
@@ -7,6 +8,10 @@ const toast = message => { const node = $('#toast'); node.textContent = message;
 function render() {
   $('#collection-count').textContent = state.collection.length;
   $('#games-count').textContent = state.games;
+  const pending = state.deposits.filter(item => item.status === 'На проверке');
+  $('#pending-count').textContent = pending.length;
+  $('#admin-deposits').innerHTML = pending.length ? pending.map((item, index) => `<div class="history-row admin-row"><div><strong>${item.file}</strong><span class="muted">${item.time}</span></div><button class="admin-action" data-approve="${state.deposits.indexOf(item)}">Подтвердить</button></div>`).join('') : '<p class="muted">Новых заявок нет.</p>';
+  $('#admin-history').innerHTML = state.adminHistory.length ? state.adminHistory.slice(0, 8).map(item => `<div class="history-row"><span>${item.user}</span><span>${item.reason}</span><strong class="win">+★ ${money(item.amount)}</strong></div>`).join('') : '<p class="muted">Начислений пока нет.</p>';
   const history = $('#history');
   history.innerHTML = state.history.length ? state.history.slice(0, 5).map(item => `<div class="history-row"><span>${item.game}</span><span>${item.time}</span><strong class="${item.result >= 0 ? 'win' : 'loss'}">${item.result >= 0 ? '+' : ''}★ ${money(item.result)}</strong></div>`).join('') : '<p class="muted">Здесь появится история твоих игр.</p>';
   const deposits = $('#deposit-list');
@@ -14,8 +19,15 @@ function render() {
   deposits.innerHTML = title + (state.deposits.length ? state.deposits.map(item => `<div class="deposit-row"><span>${item.file}</span><span class="muted">${item.time}</span><strong class="${item.status === 'На проверке' ? 'win' : ''}">${item.status}</strong></div>`).join('') : '<p class="muted" style="margin-top:20px">Заявок пока нет.</p>');
   const recent = state.deposits.filter(item => Date.now() - item.created < 1800000).length;
   $('#limit-count').textContent = Math.max(0, 5 - recent);
+  document.querySelectorAll('[data-approve]').forEach(button => button.addEventListener('click', () => {
+    const item = state.deposits[Number(button.dataset.approve)];
+    if (!item || item.status !== 'На проверке') return;
+    item.status = 'Подтверждено';
+    save();
+    toast('Заявка подтверждена');
+  }));
 }
-function switchView(view) { const target = view === 'market' ? 'games' : view; document.querySelectorAll('.view').forEach(item => item.classList.remove('active-view')); $(`#view-${target}`).classList.add('active-view'); document.querySelectorAll('.nav-item').forEach(item => item.classList.toggle('active', item.dataset.view === view)); $('#page-title').textContent = { games: 'Игровой зал', market: 'Маркет', deposit: 'Пополнение', withdraw: 'Вывод', profile: 'Профиль' }[view]; if (view === 'market') document.querySelector('.nft-heading').scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+function switchView(view) { const target = view === 'market' ? 'games' : view; document.querySelectorAll('.view').forEach(item => item.classList.remove('active-view')); $(`#view-${target}`).classList.add('active-view'); document.querySelectorAll('.nav-item').forEach(item => item.classList.toggle('active', item.dataset.view === view)); $('#page-title').textContent = { games: 'Игровой зал', market: 'Маркет', deposit: 'Пополнение', withdraw: 'Вывод', profile: 'Профиль', admin: 'Админ-панель' }[view]; if (view === 'market') document.querySelector('.nft-heading').scrollIntoView({ behavior: 'smooth', block: 'start' }); }
 document.querySelectorAll('.nav-item').forEach(button => button.addEventListener('click', () => switchView(button.dataset.view)));
 document.querySelectorAll('.buy-button').forEach(button => button.addEventListener('click', () => {
   const gift = button.dataset.gift;
@@ -35,6 +47,17 @@ document.querySelectorAll('.upgrade-button').forEach(button => button.addEventLi
   $('#modal-title').textContent = `Апгрейд: ${gift}`;
   $('#modal-subtitle').textContent = 'Улучши выбранный Telegram-подарок';
 }));
+$('#admin-credit').addEventListener('click', () => {
+  const user = $('#admin-user').value.trim();
+  const amount = Number($('#admin-amount').value);
+  const reason = $('#admin-reason').value.trim() || 'Ручное начисление';
+  if (!user.startsWith('@')) return toast('Укажи username начиная с @');
+  if (!amount || amount < 1) return toast('Укажи сумму начисления');
+  state.adminHistory.unshift({ user, amount, reason, time: new Date().toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' }) });
+  $('#admin-user').value = ''; $('#admin-amount').value = ''; $('#admin-reason').value = '';
+  save();
+  toast(`Начислено ★ ${money(amount)} пользователю ${user}`);
+});
 $('#clear-history').addEventListener('click', () => { state.history = []; save(); });
 $('#proof-file').addEventListener('change', event => { $('#file-label').textContent = event.target.files[0]?.name || 'Выбрать изображение'; });
 $('#submit-deposit').addEventListener('click', () => { const file = $('#proof-file').files[0]; const recent = state.deposits.filter(item => Date.now() - item.created < 1800000).length; if (!file) return toast('Сначала выбери изображение'); if (recent >= 5) return toast('Лимит 5 заявок за 30 минут исчерпан'); state.deposits.unshift({ file: file.name, time: new Date().toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' }), status: 'На проверке', created: Date.now() }); $('#proof-file').value = ''; $('#file-label').textContent = 'Выбрать изображение'; save(); toast('Заявка отправлена администратору'); });
