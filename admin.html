@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Klifgram | Admin</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <main class="admin-shell">
+    <header class="admin-header"><div><p class="eyebrow">Klifgram control room</p><h1>Админ-панель</h1></div><a href="index.html">← Вернуться на сайт</a></header>
+    <div class="security-note"><span>⌘</span><div><strong>Локальная панель</strong><p>Данные сохраняются только в браузере. Для production нужна серверная авторизация.</p></div></div>
+    <section class="admin-grid">
+      <form class="panel" id="credit-form"><p class="eyebrow">Баланс пользователя</p><h2>Начислить звёзды</h2><label>Telegram username<input id="admin-user" placeholder="@username" required></label><label>Сумма<input id="admin-amount" type="number" min="1" placeholder="Количество ★" required></label><label>Причина<input id="admin-reason" placeholder="Проверка NFT-пополнения"></label><button class="primary" type="submit">Начислить <span>→</span></button></form>
+      <section class="panel"><div class="panel-title"><div><p class="eyebrow">Входящие</p><h2>Заявки на проверку</h2></div><strong id="pending-count">0</strong></div><div id="admin-deposits" class="list"></div></section>
+    </section>
+    <section class="panel log-panel"><div class="panel-title"><div><p class="eyebrow">Audit log</p><h2>Журнал операций</h2></div><span class="muted">Последние действия</span></div><div id="admin-history" class="list"></div></section>
+  </main>
+  <div id="toast" class="toast"></div>
+  <script src="admin.js?v=1"></script>
+</body>
+</html>
