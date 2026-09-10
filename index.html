@@ -40,7 +40,7 @@
         </div>
         <div class="lower-grid"><div class="panel"><div class="panel-title"><h3>Последние игры</h3><button class="text-button" id="clear-history">Очистить</button></div><div id="history" class="history"></div></div><div class="panel tips"><span class="tip-icon">i</span><div><h3>Проверка NFT</h3><p>Каждая заявка на пополнение проходит ручную проверку по данным подарка и имени отправителя.</p></div></div></div>
       </section>
-      <section id="view-market" class="view"><div class="section-heading"><div><p class="eyebrow">Marketplace</p><h2>Подарки Telegram</h2></div><div class="market-tabs"><button class="market-tab active">Все подарки</button><button class="market-tab">Коллекции</button></div></div><div class="nft-grid">
+      <section id="view-market" class="view"><div class="section-heading"><div><p class="eyebrow">Marketplace</p><h2>Подарки Telegram</h2></div><div class="market-tabs"><button class="market-tab active">Все подарки</button><button class="market-tab">Коллекции</button></div></div><div id="market-grid" class="nft-grid">
         <!-- NFT catalog is kept in the marketplace view only. -->
         <article class="nft-card nft-sun"><div class="nft-art"><img src="assets/gift_1.webp" alt="Telegram gift 5167939598143193218"></div><div><span class="nft-id">GIFT #5167939598143193218</span><h3>Golden Lamp</h3><p>Limited edition</p><button class="buy-button" data-gift="Golden Lamp" data-price="350">★ 350 <span>Купить</span></button><button class="upgrade-button" data-upgrade="Golden Lamp">◇ В апгрейд</button></div></article>
         <article class="nft-card nft-wave"><div class="nft-art"><img src="assets/gift_2.webp" alt="Telegram gift 5168043875654172773"></div><div><span class="nft-id">GIFT #5168043875654172773</span><h3>Crystal Gem</h3><p>Limited edition</p><button class="buy-button" data-gift="Crystal Gem" data-price="500">★ 500 <span>Купить</span></button><button class="upgrade-button" data-upgrade="Crystal Gem">◇ В апгрейд</button></div></article>
@@ -67,5 +67,6 @@
   <div id="game-modal" class="modal-backdrop hidden"><div class="game-modal"><button class="close-modal" id="close-modal">×</button><span class="tag" id="modal-tag">MINES</span><h2 id="modal-title">Мины</h2><p id="modal-subtitle">Выбери безопасную клетку</p><div id="game-content"></div></div></div>
   <div id="toast" class="toast"></div>
   <script src="app.js?v=ad1588f"></script>
+  <script src="market-catalog.js?v=all"></script>
 </body>
 </html>
