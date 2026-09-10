@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>NFT Depot | Test Credits</title>
   <link rel="stylesheet" href="styles.css">
+  <style>.nft-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.nft-card{min-height:182px;padding:16px;display:flex;flex-direction:column;justify-content:space-between;color:var(--ink);border:1px solid rgba(16,19,19,.08)}.nft-art{height:92px;display:grid;place-items:center;font-size:58px;font-weight:800}.nft-sun{background:#f2e28d}.nft-wave{background:#9edbd8}.nft-flame{background:#f5b19b}.nft-id{font:9px 'DM Mono',monospace;color:#59615d}.nft-card h3{font-size:17px;margin:5px 0 3px;letter-spacing:-.04em}.nft-card p{font-size:10px;color:#69716b;margin:0}.nft-heading{margin-bottom:13px}@media(max-width:760px){.nft-grid{grid-template-columns:1fr}}</style>
 </head>
 <body>
   <div class="app-shell">
@@ -31,6 +32,12 @@
           <button class="game-card mines" data-game="mines"><span class="game-icon">✣</span><span class="game-name">Мины</span><span class="game-meta">Риск / награда <b>→</b></span></button>
           <button class="game-card crash" data-game="crash"><span class="game-icon">↗</span><span class="game-name">Краш</span><span class="game-meta">Поймай множитель <b>→</b></span></button>
           <button class="game-card upgrade" data-game="upgrade"><span class="game-icon">◇</span><span class="game-name">Апгрейд</span><span class="game-meta">Улучши шанс <b>→</b></span></button>
+        </div>
+        <div class="section-heading nft-heading"><div><p class="eyebrow">Коллекция депо</p><h2>NFT подарки</h2></div><span class="round-stat">Тестовая витрина</span></div>
+        <div class="nft-grid">
+          <article class="nft-card nft-sun"><div class="nft-art">✦</div><div><span class="nft-id">GIFT #001</span><h3>Golden Star</h3><p>Редкость · Legendary</p></div></article>
+          <article class="nft-card nft-wave"><div class="nft-art">◒</div><div><span class="nft-id">GIFT #014</span><h3>Blue Wave</h3><p>Редкость · Rare</p></div></article>
+          <article class="nft-card nft-flame"><div class="nft-art">♢</div><div><span class="nft-id">GIFT #027</span><h3>Red Flame</h3><p>Редкость · Epic</p></div></article>
         </div>
         <div class="lower-grid"><div class="panel"><div class="panel-title"><h3>Последние игры</h3><button class="text-button" id="clear-history">Очистить</button></div><div id="history" class="history"></div></div><div class="panel tips"><span class="tip-icon">i</span><div><h3>Демо-режим</h3><p>Все ставки используют только тестовые кредиты. Пополнения NFT и выплаты подключаются отдельно через проверенный backend.</p></div></div></div>
       </section>
